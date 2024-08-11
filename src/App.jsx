@@ -1,6 +1,7 @@
 import React from 'react'
 import "./App.css";
 import { useState } from 'react';
+import Button from './components/Button';
 
 const App = () => {
   const [countryList, setCountryList] = useState([]);
@@ -79,15 +80,19 @@ const App = () => {
       return <p>국가를 등록해 보세요</p>;
     } else {
       return (
-        <table>
+        <table className='countryTable'>
           <thead>
             <tr>
-              <th>순위</th>
-              <th>국가명</th>
-              <th>금메달</th>
-              <th>은메달</th>
-              <th>동메달</th>
-              <th>액션</th>
+              <th rowSpan={2}>순위</th>
+              <th rowSpan={2}>국가명</th>
+              <th colSpan={3}>메달</th>
+              <th rowSpan={2}>합계</th>
+              <th rowSpan={2}>액션</th>
+            </tr>
+            <tr>
+              <th>금</th>
+              <th>은</th>
+              <th>동</th>
             </tr>
           </thead>
           <tbody>
@@ -107,12 +112,13 @@ const App = () => {
               .map((list, index) => {
                 return (
                   <tr key={list.id}>
-                    <td>{index + 1}</td>
+                    <td className='rank'>{index + 1}</td>
                     <td>{list.country}</td>
                     <td>{list.gold}</td>
                     <td>{list.silver}</td>
                     <td>{list.bronze}</td>
-                    <td><button onClick={() => deleteCountryResult(list.id)}>삭제</button></td>
+                    <td>{list.gold + list.silver + list.bronze}</td>
+                    <td><Button color={"#EC1920"} onClick={() => deleteCountryResult(list.id)}>삭제</Button></td>
                   </tr>
                 )
               })
@@ -126,50 +132,58 @@ const App = () => {
   return (
     <div className='container'>
       <h1>파리 올림픽 메달 집계</h1>
-      <form id='inputForm'>
-        <label htmlFor='country'>국가명</label>
-        <input 
-          type="text" 
-          id='country' 
-          value={country} 
-          placeholder='국가 입력' 
-          onChange={(e) => {
-            setCountry(e.target.value);
-          }} 
-        />
-        <label htmlFor='goldCount'>금메달</label>
-        <input 
-          type="number" 
-          id='goldCount' 
-          value={gold} 
-          onChange={(e) => {
-            setGold(e.target.value);
-          }}
-        />
-        <label htmlFor='silverCount'>은메달</label>
-        <input 
-          type="number" 
-          id='silverCount' 
-          value={silver} 
-          onChange={(e) => {
-            setSilver(e.target.value);
-          }}
-        />
-        <label htmlFor='bronzeCount'>동메달</label>
-        <input 
-          type="number" 
-          id='bronzeCount' 
-          value={bronze} 
-          onChange={(e) => {
-            setBronze(e.target.value);
-          }}
-        />
-        <div>
-          <button type='submit' onClick={createCountryResult}>국가 추가</button>
-          <button type="button" onClick={updateCountryResult}>업데이트</button>
+      <form id='inputForm' className='inputForm'>
+        <div className='inputBox'>
+          <label htmlFor='country'>국가명</label>
+          <input 
+            type="text" 
+            id='country' 
+            value={country} 
+            placeholder='국가 입력' 
+            onChange={(e) => {
+              setCountry(e.target.value);
+            }} 
+          />
+        </div>
+        <div className='inputBox'>
+          <label htmlFor='goldCount'>금메달</label>
+          <input 
+            type="number" 
+            id='goldCount' 
+            value={gold} 
+            onChange={(e) => {
+              setGold(e.target.value);
+            }}
+          />
+        </div>
+        <div className='inputBox'>
+          <label htmlFor='silverCount'>은메달</label>
+          <input 
+            type="number" 
+            id='silverCount' 
+            value={silver} 
+            onChange={(e) => {
+              setSilver(e.target.value);
+            }}
+          />
+        </div>
+        <div className='inputBox'>
+          <label htmlFor='bronzeCount'>동메달</label>
+          <input 
+            type="number" 
+            id='bronzeCount' 
+            value={bronze} 
+            onChange={(e) => {
+              setBronze(e.target.value);
+            }}
+          />
+        </div>
+        <div className='buttonBox'>
+          <Button color={"#051440"} type='submit' onClick={createCountryResult}>국가 추가</Button>
+          <Button color={"#051440"} type="button" onClick={updateCountryResult}>업데이트</Button>
         </div>
       </form>
-      <div className='country_list'>
+      <div className='countryList'>
         {createComponent()}
       </div>
     </div>
