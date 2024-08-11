@@ -1,8 +1,25 @@
-# React + Vite
+- **README 파일 작성**:
+    - 프로젝트 구조, 실행 방법, 주요 기능에 대해 설명하는 `README` 파일을 작성합니다.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+**과제 제출시에는 아래 질문의 답변과 함께 제출해주세요.**
+1. **JSX 문법**이란 무엇일까요?
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+2. 사용자가 입력하는 값, 또는 이미 입력된 값, 메달 정보와 같은 **애플리케이션의 상태를 관리하기(추가, 변경, 삭제) 위해 리액트의 어떤 기능을 사용하셨나요**?
+
+3. 애플리케이션의 **상태 값들을 컴포넌트 간 어떤 방식으로 공유하셨나요**?
+
+4. 기능 구현을 위해 **불변성 유지가** 필요한 부분이 있었다면 하나만 설명해 주세요.
+
+5. 반복되는 컴포넌트를 파악하고 재사용할 수 있는 **컴포넌트로 분리해 보셨나요?** 그렇다면 **어떠한 이점이 있었나요?**
+
+- **제출 폼 UI 구현하기**: 나라 이름과 금, 은, 동 메달 수를 입력할 수 있는 폼을 만듭니다.
+- **메달 집계 CRUD 구현하기**
+    - **Create**: 새로운 나라와 그 나라가 획득한 메달 수를 추가합니다.
+    - **Read**: 나라별 메달 집계 리스트를 보여줍니다.
+    - **Update**: 기존에 추가된 나라의 메달 수를 수정할 수 있습니다.
+    - **Delete**: 나라 정보를 삭제할 수 있습니다.
+- **정렬**: 메달 집계는 금메달 수를 기준으로 내림차순 정렬되어야 합니다.
+
+1. 나라 이름을 입력했을 때 이미 등록된 국가라면 `alert` 메시지를 띄워 사용자에게 알립니다.
+2. 입력된 국가가 등록되지 않은 경우 `alert` 메시지를 띄워 사용자에게 알립니다.
