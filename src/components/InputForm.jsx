@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Button from './Button';
 
-const InputForm = ({countryList, setCountryList, countryName}) => {
+const InputForm = ({countryList, setCountryList}) => {
   const [country, setCountry] = useState("");
   const [gold, setGold] = useState(0);
   const [silver, setSilver] = useState(0);
@@ -14,9 +14,13 @@ const InputForm = ({countryList, setCountryList, countryName}) => {
     setBronze(0);
   };
 
+  const getCountryName = (list) => {
+    return (list.length !== 0) ? list.map((one) => one.country) : [];
+  };
+
   const createCountryResult = (e) => {
     e.preventDefault();
-    const countryNameList = countryName(countryList);
+    const countryNameList = getCountryName(countryList);
 
     if(country !== '') {
       if(!countryNameList.some((name) => name === country)) {
@@ -35,7 +39,7 @@ const InputForm = ({countryList, setCountryList, countryName}) => {
 
   const updateCountryResult = (e) => {
     e.preventDefault();
-    const countryNameList = countryName(countryList);
+    const countryNameList = getCountryName(countryList);
 
     if(country !== '') {
       if(countryNameList.some((name) => name === country)) {

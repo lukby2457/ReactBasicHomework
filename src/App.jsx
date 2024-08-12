@@ -7,16 +7,6 @@ import CreateTr from './components/CreateTr';
 const App = () => {
   const [countryList, setCountryList] = useState([]);
 
-  const getCountryName = (list) => {
-    return (list.length !== 0) ? list.map((one) => one.country) : [];
-  };
-
-  const deleteCountryResult = (id) => {
-    const deletedCountryList = countryList.filter((list) => list.id !== id)
-
-    setCountryList([...deletedCountryList]);
-  };
-
   function createComponent() {
     if (countryList.length === 0) {
       return <p>국가를 등록해 보세요</p>;
@@ -52,7 +42,10 @@ const App = () => {
                 }
               })
               .map((list, index) => {
-                return <CreateTr key={list.id} list={list} index={index} deleteFunction={deleteCountryResult} />
+                return <CreateTr 
+                key={list.id} list={list} index={index} 
+                countryList={countryList}
+                setCountryList={setCountryList} />
               })
             }
           </tbody>
@@ -66,8 +59,7 @@ const App = () => {
       <h1>파리 올림픽 메달 집계</h1>
       <InputForm 
         countryList={countryList}
-        setCountryList={setCountryList}
-        countryName={getCountryName} />
+        setCountryList={setCountryList} />
       <div className='countryList'>
         {createComponent()}
       </div>
