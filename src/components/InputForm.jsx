@@ -47,14 +47,13 @@ const InputForm = ({countryList, setCountryList}) => {
 
         const updatedCountryList = countryList.filter((list) => list.id !== countryResult.id);
 
-        const newCountryResult = {
+        countryResult = {
           id: countryResult.id,
           country: country,
           gold: Number(gold),
           silver: Number(silver),
           bronze: Number(bronze),
         };
-        countryResult = { ...countryResult, ...newCountryResult };
         setCountryList([...updatedCountryList, countryResult]);
         clearForm();
       } else alert('등록되지 않은 국가입니다');
