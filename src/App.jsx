@@ -30,16 +30,11 @@ const App = () => {
           <tbody>
             {countryList
               .sort((a, b) => {
-                if(a.gold > b.gold) return -1;
-                else if(a.gold < b.gold) return 1;
-                else {
-                  if(a.silver > b.silver) return -1;
-                  else if(a.silver < b.silver) return 1;
-                  else {
-                    if(a.bronze > b.bronze) return -1;
-                    else return 1;
-                  }
-                }
+                if(a.gold === b.gold) {
+                  if(a.silver === b.silver) {
+                    return b.bronze - a.bronze
+                  } else return b.silver - a.silver
+                } else return b.gold - a.gold
               })
               .map((list, index) => {
                 return <CreateTr 

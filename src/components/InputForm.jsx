@@ -45,17 +45,22 @@ const InputForm = ({countryList, setCountryList}) => {
       if(countryNameList.some((name) => name === country)) {
         let countryResult = countryList.find((element) => element.country === country);
 
-        const updatedCountryList = countryList.filter((list) => list.id !== countryResult.id);
-
-        const newCountryResult = {
+        countryResult = {
           id: countryResult.id,
           country: country,
           gold: Number(gold),
           silver: Number(silver),
           bronze: Number(bronze),
         };
-        countryResult = { ...countryResult, ...newCountryResult };
-        setCountryList([...updatedCountryList, countryResult]);
+
+        // map을 사용하여 순회하는데 country이름과 일치하면 ..., ... / 일치하지 않으면 원본 객체
+        const newCountryList = countryList.map((list) => {
+          if(list.country === countryResult.country) {
+            return {...list, ...countryResult}
+          } else return {...list}
+        });
+        
+        setCountryList(newCountryList);
         clearForm();
       } else alert('등록되지 않은 국가입니다');
     } else alert('국가명을 입력해주세요');
