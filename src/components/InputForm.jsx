@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Button from './Button';
+import Input from './Input';
 
 const InputForm = ({countryList, setCountryList}) => {
   const [country, setCountry] = useState("");
@@ -70,11 +71,11 @@ const InputForm = ({countryList, setCountryList}) => {
     <form id='inputForm' className='inputForm'>
       <div className='inputBox'>
         <label htmlFor='country'>국가명</label>
-        <input 
-          type="text" 
-          id='country' 
+        <Input 
+          type={"text"} 
+          id={'country'} 
           value={country} 
-          placeholder='국가 입력' 
+          placeholder={'국가 입력'} 
           onChange={(e) => {
             setCountry(e.target.value);
           }} 
@@ -82,9 +83,9 @@ const InputForm = ({countryList, setCountryList}) => {
       </div>
       <div className='inputBox'>
         <label htmlFor='goldCount'>금메달</label>
-        <input 
-          type="number" 
-          id='goldCount' 
+        <Input 
+          type={"number"} 
+          id={'goldCount'} 
           value={gold} 
           onChange={(e) => {
             setGold(e.target.value);
@@ -93,9 +94,9 @@ const InputForm = ({countryList, setCountryList}) => {
       </div>
       <div className='inputBox'>
         <label htmlFor='silverCount'>은메달</label>
-        <input 
-          type="number" 
-          id='silverCount' 
+        <Input 
+          type={"number"} 
+          id={'silverCount'} 
           value={silver} 
           onChange={(e) => {
             setSilver(e.target.value);
@@ -104,9 +105,9 @@ const InputForm = ({countryList, setCountryList}) => {
       </div>
       <div className='inputBox'>
         <label htmlFor='bronzeCount'>동메달</label>
-        <input 
-          type="number" 
-          id='bronzeCount' 
+        <Input 
+          type={"number"} 
+          id={'bronzeCount'} 
           value={bronze} 
           onChange={(e) => {
             setBronze(e.target.value);
